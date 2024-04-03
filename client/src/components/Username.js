@@ -8,7 +8,7 @@ import styles from "../styles/Username.module.css";
 
 export default function Username() {
   const formik = useFormik({
-    intitialValues: {
+    initialValues: {
       username: "",
     },
     validateOnBlur: false,
@@ -28,13 +28,14 @@ export default function Username() {
             </span>
           </div>
 
-          <form className="py-1">
+          <form className="py-1" onSubmit={formik.handleSubmit}>
             <div className="profile flex justify-center py-4">
               <img src={avatar} className={styles.profile_img} alt="avatar" />
             </div>
 
             <div className="textbox flex flex-col items-center gap-6">
               <input
+                {...formik?.getFieldProps("username")}
                 className={styles.textbox}
                 type="text"
                 placeholder="Username"
